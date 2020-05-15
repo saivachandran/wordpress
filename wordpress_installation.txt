@@ -1,0 +1,66 @@
+word press installation on centos 7
+===================================
+
+1. install apache and php before install wordpress
+
+2. mysql -h rds end point -u saiva -p
+
+3. CREATE DATABASE wordpress;
+
+4. CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'password';
+
+5. GRANT ALL PRIVILEGES ON wordpress.* TO 'adminuser'@'localhost';
+
+6. FLUSH PRIVILEGES;
+
+7. cd ~
+
+8.  wget http://wordpress.org/latest.tar.gz
+
+9. yum install wget
+
+10. tar -xzvf latest.tar.gz
+
+11. sudo rsync -avP ~/wordpress/ /var/www/html/
+
+12. mkdir /var/www/html/wp-content/uploads
+
+13. sudo chown -R apache:apache /var/www/html/*
+
+Configuring WordPress
+---------------------
+
+1. cd /var/www/html
+
+2. cp wp-config-sample.php wp-config.php
+
+3. vim  wp-config.php
+
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'database_name_here' );
+/** MySQL database username */
+define( 'DB_USER', 'username_here' );
+/** MySQL database password */
+define( 'DB_PASSWORD', 'password_here' );
+
+
+New Settings:
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress' );
+/** MySQL database username */
+define( 'DB_USER', 'adminuser' );
+/** MySQL database password */
+define( 'DB_PASSWORD', 'password' );
+
+Access url: http://server_domain_name_or_IP/wp-admin
+
+website Refrence: https://www.liquidweb.com/kb/how-to-install-wordpress-on-centos-7/
+
+
+
+
+
